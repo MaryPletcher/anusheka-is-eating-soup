@@ -22,11 +22,11 @@ function Home() {
 
 
     //write to the database!
-    function writeUserData(text, photo, dropID) {
+    function writeUserData(text, photo) {
         //get reference to database
         const db = getDatabase();
-        //
-        set(ref(db, 'drops/' + dropID), {
+        //write to the database 
+        set(ref(db, 'drops/' + Date.now()), {
             text: text,
             photoURL: photo,
             timeStamp: Date.now()
@@ -36,12 +36,28 @@ function Home() {
 
     const handleSubmit = async () => {
         //an error if the message and imageFile isnt uploaded 
-        if (!message && !imageFile) {
+        console.log("message:" + message);
+        console.log("imageFile:" + imageFile);
+        console.log("imageFile.name:" + imageFile.name);
+        if (!message && (imageFile == null)) {
             alert("Add a message or an image before submitting!");
             return;
         }
-        //
-        writeUserData(message, "TESTphoto.url", "000")
+
+        //upload tha picture
+        let imagePath = "";
+        //Upload image if present to cloud storage (yikes i hope i dont get charged)
+        if (imageFile) {
+            imagePath = `${Date.now()}_${imageFile.name}`
+            const storageReference = storageRef(storage, `soupPics/${imagePath}`);
+            uploadBytes(storageReference, imageFile).then((snapshot) => {
+                console.log('Uploaded an image file!');
+            });
+        }
+
+
+        //write to the database
+        writeUserData(message, imagePath)
     }
 
     //lets look at this later 
