@@ -1,15 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage"; // for uploading images
-import { getDatabase, ref, push, set } from "firebase/database"; // for saving data (message + image URL)
+import { getDatabase, ref, push, set, onValue } from "firebase/database"; // for saving data (message + image URL)
 import { storage, database } from "../firebase";
 
+//________ soup drops list component 
+function ListDrops({dropData}) {
+    const [url, setUrl] = useState(null);
+    if (!dropData) return <p>soup incoming...</p>;
+
+    //console.log("dropData=", dropData);
+    //console.log("dropDataAAAa:" , dropData?.["1762206817660"]?.text);
+
+    const dropsList = Object.entries(dropData).map(([i, element]) => (
+        <SoupDrop 
+            key = {i}
+            i = {i}
+            element = {element}
+        ></SoupDrop>
+    ));
+    return <div>{dropsList}</div>;
+    }
+//________ end soup drops list component 
+
+//________ individual soup drop component
+function SoupDrop({i, element}) {
+    const [durl, setdUrl] = useState(null);
+
+    useEffect(() => {
+        if (!element.photoURL) return;
+        const imgRef = storageRef(storage, element.photoURL);
+
+        getDownloadURL(imgRef)
+            .then((downloadUrl) => setdUrl(downloadUrl))
+            .catch((err) =>console.error(err))
+    }, [element.photoURL]);
+
+    return (
+        <li>{i}
+            <p>{element.text}</p>
+            <p>{element.photoURL}</p>
+            {durl ? <img src = {durl}></img> : <p>loading pretty soup pic...</p>}
+        </li>
+    )
+}
+//________ end individual soup drop component
 
 function Home() {
     //define use states
     const [message, setMessage] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [previewUrl, setPreviewUrl] = useState(null);
-    const [submitting, setSubmitting] = useState(false);
+    const [dropData, setDropData] = useState(null);
+    // const [submitting, setSubmitting] = useState(false);
+
+    //define variables 
+    
 
     //handle for uploading a file and show a preview 
     const handleImageChange = (e) => {
@@ -20,11 +65,11 @@ function Home() {
         }
     };
 
+    //get reference to database
+    const db = getDatabase();
 
     //write to the database!
     function writeUserData(text, photo) {
-        //get reference to database
-        const db = getDatabase();
         //write to the database 
         set(ref(db, 'drops/' + Date.now()), {
             text: text,
@@ -34,6 +79,7 @@ function Home() {
         alert("successfully sent to the database!")
     }
 
+    //handle clicking submit 
     const handleSubmit = async () => {
         //an error if the message and imageFile isnt uploaded 
         console.log("message:" + message);
@@ -48,8 +94,8 @@ function Home() {
         let imagePath = "";
         //Upload image if present to cloud storage (yikes i hope i dont get charged)
         if (imageFile) {
-            imagePath = `${Date.now()}_${imageFile.name}`
-            const storageReference = storageRef(storage, `soupPics/${imagePath}`);
+            imagePath = `soupPics/${Date.now()}_${imageFile.name}`
+            const storageReference = storageRef(storage, `${imagePath}`);
             uploadBytes(storageReference, imageFile).then((snapshot) => {
                 console.log('Uploaded an image file!');
             });
@@ -58,7 +104,30 @@ function Home() {
 
         //write to the database
         writeUserData(message, imagePath)
+
+        //Reset form
+        setMessage("");
+        setImageFile(null);
+        setPreviewUrl(null);
     }
+    //end of handling submit 
+
+    //_____get the drops
+
+    //get the data using use effect
+    useEffect (() => {
+        //reference to firebase 
+        const dropsRef = ref(db, 'drops/');
+
+        const unsubscribe = onValue(dropsRef, (snapshot) => {
+            const data = snapshot.val();
+            //console.log(data);
+            setDropData(data);
+        });
+        return () => unsubscribe();
+    }, []);
+    console.log(dropData);
+    //______end get the drops
 
     //lets look at this later 
     // //handle for submitting 
@@ -135,6 +204,15 @@ function Home() {
             >
                 Submit
             </button>
+
+            <div>
+                <p>example</p>
+                <ListDrops
+                    dropData = {dropData}
+                    db = {db}
+                />
+            </div>    
+
         </div>
     );
 }
