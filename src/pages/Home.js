@@ -91,19 +91,24 @@ function Home() {
         }
 
         //upload tha picture
-        let imagePath = "";
+        let imagePath ="";
+        let imageUrl = "";
         //Upload image if present to cloud storage (yikes i hope i dont get charged)
         if (imageFile) {
             imagePath = `soupPics/${Date.now()}_${imageFile.name}`
             const storageReference = storageRef(storage, `${imagePath}`);
-            uploadBytes(storageReference, imageFile).then((snapshot) => {
-                console.log('Uploaded an image file!');
-            });
+
+            // make sure upload is complee 
+            await uploadBytes(storageReference, imageFile);
+            // uploadBytes(storageReference, imageFile).then((snapshot) => {
+            //     console.log('Uploaded an image file!');
+            // });
+            imageUrl = await getDownloadURL(storageReference);
         }
 
 
         //write to the database
-        writeUserData(message, imagePath)
+        writeUserData(message, imageUrl)
 
         //Reset form
         setMessage("");
