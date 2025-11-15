@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage"; // for uploading images
 import { getDatabase, ref, push, set, onValue } from "firebase/database"; // for saving data (message + image URL)
 import { storage, database } from "../firebase";
+import { Link } from 'react-router-dom';
+
 
 //________ soup drops list component 
 function ListDrops({dropData}) {
@@ -79,7 +81,7 @@ function Home() {
         alert("successfully sent to the database!")
     }
 
-    //handle clicking submit 
+    //_____handle clicking submit 
     const handleSubmit = async () => {
         //an error if the message and imageFile isnt uploaded 
         console.log("message:" + message);
@@ -109,13 +111,13 @@ function Home() {
 
         //write to the database
         writeUserData(message, imageUrl)
-
+        //HERE IS WHERE A TEXT WOULD BE SENT 
         //Reset form
         setMessage("");
         setImageFile(null);
         setPreviewUrl(null);
     }
-    //end of handling submit 
+    //______end of handling submit 
 
     //_____get the drops
 
@@ -134,52 +136,13 @@ function Home() {
     console.log(dropData);
     //______end get the drops
 
-    //lets look at this later 
-    // //handle for submitting 
-    // const handleSubmit = async () => {
-    //     if (!message && !imageFile) {
-    //     alert("Add a message or an image before submitting!");
-    //     return;
-    //     }
-
-    //     setSubmitting(true);
-    //     try {
-    //     let imageUrl = "";
-
-    //     // Upload image if present
-    //     if (imageFile) {
-    //         const storageReference = storageRef(storage, `drops/${Date.now()}_${imageFile.name}`);
-    //         await uploadBytes(storageReference, imageFile);
-    //         imageUrl = await getDownloadURL(storageReference);
-    //     }
-
-    //     // Save drop to Realtime Database
-    //     const newDropRef = push(ref(database, "drops"));
-    //     await set(newDropRef, {
-    //         message,
-    //         imageUrl,
-    //         timestamp: Date.now(),
-    //     });
-
-    //     const dropId = newDropRef.key;
-    //     alert(`Drop created! Share this link: https://yourapp.web.app/drops/${dropId}`);
-
-    //     // Reset form
-    //     setMessage("");
-    //     setImageFile(null);
-    //     setPreviewUrl(null);
-    //     } catch (err) {
-    //     console.error("Error creating drop:", err);
-    //     alert("Error creating drop. Check console.");
-    //     }
-
-    //     setSubmitting(false);
-    // };
+    
 
     //where all the stuff you see is 
     return (
         <div>
             <p>this is a test</p>
+            <Link to = "/ControlPanelPage">ControlPanelPage</Link>
             <textarea
                 type ="text"
                 placeholder = "your message to your soup fans"
