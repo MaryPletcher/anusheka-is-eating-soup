@@ -15,9 +15,14 @@
   --space-3: 12px;
   --space-4: 16px;
 
-  --font-h1: 32px;
-  --font-h2: 24px;
-  --font-body: 16px;
+  /* font sizes*/
+  --font-h1: clamp(2rem, 5vw, 4rem);
+  --font-h2: clamp(1.5rem, 4vw, 3rem);
+  --font-body: clamp(1rem, 2.5vw, 1.85rem);
+
+  /*font families*/
+  --font-tilt: "Tilt Warp", sans-serif;
+  --font-sulphur: "Sulphur Point", sans-serif;
 
   --shadow-sm: 0px 1px 3px rgba(0,0,0,0.1);
   --shadow-md: 0px 4px 12px rgba(0,0,0,0.15);

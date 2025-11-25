@@ -4,9 +4,10 @@
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
   height: 50px;
-  /* width: 100%; */
+  width: 100%;
   border: none;
   font-size: var(--font-h2);
-  font-weight: bold;
+  font-family: var(--font-tilt);
+  margin: var(--space-3);
   /* cursor: pointer; */
 }

@@ -1,7 +1,6 @@
 
 .hiddenInput{
   display: none; 
-  z-index: -200;
   /* visibility: hidden; */
   
 }
@@ -12,7 +11,10 @@
   background-color: var(--color-component-bg);
   border-radius: var(--radius-md);
   color: var(--color-component-text);
-
+  font-family: var(--font-sulphur);
+  margin: var(--space-3);
+  width: 100%;
+  font-size: var(--font-body);
 }
 
 .customLabel {
@@ -31,7 +33,11 @@
 }
 
 .icon {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   margin-bottom: var(--space-2);
+}
+
+.span {
+    font-family: var(font-tilt);
 }
