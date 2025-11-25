@@ -1,0 +1,12 @@
+.primary {
+  background: var(--color-component-bg);
+  color: var(--color-component-text);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  height: 50px;
+  /* width: 100%; */
+  border: none;
+  font-size: var(--font-h2);
+  font-weight: bold;
+  /* cursor: pointer; */
+}

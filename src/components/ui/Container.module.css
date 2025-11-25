@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column; /* stacks children vertically */
+  align-items: center; /* centers horizontally */
+  height: 100vh; /* full screen height */
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10%;
+  /* width: 100%;  */
+  max-width: 1112px; 
+}

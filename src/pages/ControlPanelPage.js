@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 function ControlPanelPage() {
     return (
     <div>
-        <Link to = "/">Home</Link>
+        {/* <Link to = "/">Home</Link> */}
         <ControlPanel/>
     </div>
     );

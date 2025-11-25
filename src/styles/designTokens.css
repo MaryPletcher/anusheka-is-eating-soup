@@ -2,7 +2,9 @@
   --color-primary: #2B5C47;
   --color-secondary: #AFD9B3;
   --color-bg: #2B5C47;
-  --color-text: #1E1E1E;
+  --color-text: #AFD9B3;
+  --color-component-bg: #AFD9B3;
+  --color-component-text: #2B5C47;
 
   --radius-sm: 4px;
   --radius-md: 16px;

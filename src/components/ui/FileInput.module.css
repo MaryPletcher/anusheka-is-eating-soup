@@ -1,0 +1,37 @@
+
+.hiddenInput{
+  display: none; 
+  z-index: -200;
+  /* visibility: hidden; */
+  
+}
+
+.wrapper {
+  display: inline-block; /* container for the label */
+  cursor: pointer;
+  background-color: var(--color-component-bg);
+  border-radius: var(--radius-md);
+  color: var(--color-component-text);
+
+}
+
+.customLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.customLabel:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: var(--space-2);
+}

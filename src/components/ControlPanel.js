@@ -3,6 +3,14 @@ import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage
 import { getDatabase, ref, push, set, onValue } from "firebase/database"; // for saving data (message + image URL)
 import { storage, database } from "../firebase";
 import styles from "../styles/controlPanel.module.css";
+import Button from "./ui/Button";
+import Container from "./ui/Container";
+import TextArea from "./ui/TextArea";
+import FileInput from "./ui/FileInput";
+import Title from "./ui/Title";
+
+
+import { Link } from 'react-router-dom';
 
 function ControlPanel() {
     //define use states
@@ -17,11 +25,13 @@ function ControlPanel() {
     
         //handle for uploading a file and show a preview 
         const handleImageChange = (e) => {
+            console.log("handeling image change")
             const file = e.target.files[0];
             if (file) {
             setImageFile(file);
             setPreviewUrl(URL.createObjectURL(file)); // show preview
             }
+
         };
     
         //get reference to database
@@ -78,38 +88,44 @@ function ControlPanel() {
         
         //where all the stuff you see goes 
         return(
-            <div className = {styles.tileContainer}>
-                <h2>Anusheka's Soup Control Panel</h2>
-                <textarea
+            <div>
+            {/* <div className = {styles.tileContainer}> */}
+            <Container>
+                <Link to = "/">Home</Link>
+                <Title>Anusheka's Soup Control Panel</Title>
+                <TextArea
                     type ="text"
                     placeholder = "write a message describing your soup or just say hi!"
                     value = {message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className = {styles.message}
-                ></textarea>
+                    //className = {styles.message}
+                ></TextArea>
 
-                <input
-                    type="file"
+                <FileInput
+                    // type="file"
                     accept="image/*"
                     onChange={handleImageChange}
+                    previewUrl = {previewUrl}
                 />
 
-                {previewUrl && (
+                {/* {previewUrl && (
                     <div style={{ marginBottom: "1rem" }}>
                     <p>Preview:</p>
                     <img
                         src={previewUrl}
                         alt="preview"
-                        style={{ maxWidth: "100%", borderRadius: "10px" }}
+                        style={{ maxWidth: "20%", borderRadius: "10px" }}
                     />
                     </div>
-                )}
+                )} */}
 
-                <button
+                <Button
+                variant = "primary"
                     onClick={handleSubmit}
                 >
                     SOUP!!!
-                </button>
+                </Button>
+                </Container>
             </div>
         );
 
