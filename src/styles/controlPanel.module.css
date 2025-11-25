@@ -1,0 +1,28 @@
+.tileContainer {
+    display: grid;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    background-color: #2B5C47;
+}
+
+.message{
+    min-height: 142px;
+    min-width: 390px;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    text-decoration: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    background-color: #AFD9B3;
+    color: #2B5C47;
+    border-radius: 12px;
+}
+
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+}

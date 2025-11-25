@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage"; // for uploading images
 import { getDatabase, ref, push, set, onValue } from "firebase/database"; // for saving data (message + image URL)
 import { storage, database } from "../firebase";
+import styles from "../styles/controlPanel.module.css";
 
 function ControlPanel() {
     //define use states
@@ -77,13 +78,14 @@ function ControlPanel() {
         
         //where all the stuff you see goes 
         return(
-            <div class = "tileContainer">
-                <p>this is a test</p>
+            <div className = {styles.tileContainer}>
+                <h2>Anusheka's Soup Control Panel</h2>
                 <textarea
                     type ="text"
-                    placeholder = "your message to your soup fans"
+                    placeholder = "write a message describing your soup or just say hi!"
                     value = {message}
                     onChange={(e) => setMessage(e.target.value)}
+                    className = {styles.message}
                 ></textarea>
 
                 <input
@@ -106,7 +108,7 @@ function ControlPanel() {
                 <button
                     onClick={handleSubmit}
                 >
-                    Submit
+                    SOUP!!!
                 </button>
             </div>
         );
