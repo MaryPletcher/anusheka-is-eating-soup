@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ControlPanelPage from "./pages/ControlPanelPage";
-
+import BirthdayMessagePage from "./pages/BirthdayMessagePage";
 
 function App() {
   return (
@@ -17,6 +17,8 @@ function App() {
         {/* control panel page */}
         <Route path="/ControlPanelPage" element={<ControlPanelPage />} />
 
+        {/* birthday message page */}
+        <Route path="/BirthdayMessagePage" element={<BirthdayMessagePage />} />
         {/* individual drop page (dynamic route) */}
         {/* <Route path="/drops/:id" element={<DropPage />} /> */}
 
