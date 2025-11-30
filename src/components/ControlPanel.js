@@ -8,6 +8,7 @@ import Container from "./ui/Container";
 import TextArea from "./ui/TextArea";
 import FileInput from "./ui/FileInput";
 import Title from "./ui/Title";
+import Nav from "./Nav";
 
 
 import { Link } from 'react-router-dom';
@@ -91,8 +92,8 @@ function ControlPanel() {
             <div>
             {/* <div className = {styles.tileContainer}> */}
             <Container>
-                <Link to = "/">Home</Link>
-                <Title>Anusheka's Soup Control Panel</Title>
+                {/* <Link to = "/">Home</Link> */}
+                <Title>Soup Control Panel</Title>
                 <TextArea
                     type ="text"
                     placeholder = "write a message describing your soup or just say hi!"

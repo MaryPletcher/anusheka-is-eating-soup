@@ -5,11 +5,17 @@ import { storage, database } from "../firebase";
 import ControlPanel from "../components/ControlPanel.js";
 import Home from "../pages/Home.js";
 import { Link } from 'react-router-dom';
+import Nav from "../components/Nav";
 
 function ControlPanelPage() {
     return (
     <div>
-        {/* <Link to = "/">Home</Link> */}
+        <Nav>
+            <Link to = "/">soup history</Link>
+            <a> | </a>
+            <Link to = "/ControlPanelPage">soup control panel</Link>
+            {/* <a> | </a> */}
+        </Nav>
         <ControlPanel/>
     </div>
     );
