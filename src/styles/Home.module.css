@@ -1,0 +1,9 @@
+p {
+    font-size: var(--font-body);
+    font-family: var(--font-sulphur);
+    color: var(--color-text);
+}
+
+img {
+    width: 100%;
+}

@@ -3,7 +3,10 @@ import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage
 import { getDatabase, ref, push, set, onValue } from "firebase/database"; // for saving data (message + image URL)
 import { storage, database } from "../firebase";
 import { Link } from 'react-router-dom';
-
+import Nav from "../components/Nav";
+import Container from "../components/ui/Container";
+import Title from "../components/ui/Title";
+import styles from '../styles/Home.module.css';
 
 //________ soup drops list component 
 function ListDrops({dropData}) {
@@ -13,7 +16,7 @@ function ListDrops({dropData}) {
     //console.log("dropData=", dropData);
     //console.log("dropDataAAAa:" , dropData?.["1762206817660"]?.text);
 
-    const dropsList = Object.entries(dropData).map(([i, element]) => (
+    const dropsList = Object.entries(dropData).toReversed().map(([i, element]) => (
         <SoupDrop 
             key = {i}
             i = {i}
@@ -37,12 +40,15 @@ function SoupDrop({i, element}) {
             .catch((err) =>console.error(err))
     }, [element.photoURL]);
 
+    var date = new Date(element.timeStamp)
+    var postedDate = date.getDate() + "/" + (date.getMonth() +1) + "/" + date.getFullYear()
     return (
-        <li>{i}
-            <p>{element.text}</p>
-            <p>{element.photoURL}</p>
+        <Container>
+            <p>{postedDate}</p>
+            {/* <p>{element.photoURL}</p> */}
             {durl ? <img src = {durl}></img> : <p>loading pretty soup pic...</p>}
-        </li>
+            <p>{element.text}</p>
+        </Container>
     )
 }
 //________ end individual soup drop component
@@ -141,9 +147,17 @@ function Home() {
     //where all the stuff you see is 
     return (
         <div>
-            <p>this is a test</p>
-            <Link to = "/ControlPanelPage">ControlPanelPage</Link>
-            <textarea
+            <Nav>
+                <Link to = "/">soup history</Link>
+                <a> | </a>
+                <Link to = "/ControlPanelPage">soup control panel</Link>
+                {/* <a> | </a> */}
+            </Nav>
+            <Container>
+            <Title>Anusheka's Soup History</Title>
+            {/* <p>this is a test</p> */}
+            {/* <Link to = "/ControlPanelPage">ControlPanelPage</Link> */}
+            {/* <textarea
                 type ="text"
                 placeholder = "your message to your soup fans"
                 value = {message}
@@ -171,16 +185,16 @@ function Home() {
                 onClick={handleSubmit}
             >
                 Submit
-            </button>
+            </button> */}
 
             <div>
-                <p>example</p>
+                {/* <p>example</p> */}
                 <ListDrops
                     dropData = {dropData}
                     db = {db}
                 />
             </div>    
-
+            </Container>
         </div>
     );
 }
