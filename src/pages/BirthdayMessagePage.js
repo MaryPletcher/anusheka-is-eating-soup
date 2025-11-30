@@ -22,6 +22,7 @@ function BirthdayMessagePage() {
             <Link to = "/BirthdayMessagePage">happy birthday!</Link> */}
         </Nav>
         <Container>
+        <Container>
             <Title>Happy Birthday ANUSHEKA!!</Title>
             <p>Hi Anusheka!!! Happy birthday!! I made this for you to share your soup joy with all your friends &lt;3 because we love you and hearing about your soup. </p>
             <p>So, next time you have some soup please take a pic or just type up your thoughts and click SOUP! </p>
@@ -43,6 +44,7 @@ function BirthdayMessagePage() {
             <p>ps idk if you remember when this idea was created but i totally stole it from you so i hope you're not actually working on this project HEHE</p>
             <img src = {origins}></img> 
             <p>&lt;3 mary</p>
+        </Container>
         </Container>
     </div>
 

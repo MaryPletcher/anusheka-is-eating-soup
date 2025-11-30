@@ -6,6 +6,7 @@ import ControlPanel from "../components/ControlPanel.js";
 import Home from "../pages/Home.js";
 import { Link } from 'react-router-dom';
 import Nav from "../components/Nav";
+import Container from "../components/ui/Container";
 
 function ControlPanelPage() {
     return (

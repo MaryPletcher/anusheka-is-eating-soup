@@ -93,6 +93,7 @@ function ControlPanel() {
             {/* <div className = {styles.tileContainer}> */}
             <Container>
                 <Title>Soup Control Panel</Title>
+                <Container>
                 <TextArea
                     type ="text"
                     placeholder = "write a message describing your soup or just say hi!"
@@ -125,6 +126,7 @@ function ControlPanel() {
                 >
                     SOUP!!!
                 </Button>
+                </Container>
                 </Container>
             </div>
         );
