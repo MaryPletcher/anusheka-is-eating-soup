@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column; /* stacks children vertically */
   align-items: center; /* centers horizontally */
-  /* height: 100vh; full screen height */
+  /*height: 100vh;  full screen height */
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 0%;
-  margin-bottom: 10%;
+  padding-bottom: 10%;
   /* width: 100%;  */
   max-width: 1112px; 
 }

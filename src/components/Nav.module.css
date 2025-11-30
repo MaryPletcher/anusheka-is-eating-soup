@@ -8,11 +8,12 @@
     padding: var(--space-2);
     color: var(--color-component-text);
     text-decoration: none;
-    padding-left: 4%;
+    /* padding-left: 4%; */
     font-size: var(--font-nav);
     background-color: var(--color-component-bg);
-    padding-right: 10%;
+    /* padding-right: 10%; */
     align-items: center;
+    justify-content: center;
 }
 .page {
     font-family: var(--font-sulphur);
@@ -24,4 +25,5 @@ a:-webkit-any-link {
     color: var(--color-component-text);
     font-family: var(--font-sulphur);
     font-size: var(--font-nav);
+    margin: 3px;
 }

@@ -19,7 +19,7 @@
   --font-h1: clamp(2rem, 5vw, 4rem);
   --font-h2: clamp(1.5rem, 4vw, 3rem);
   --font-body: clamp(1rem, 2.5vw, 1.85rem);
-  --font-nav: clamp(.9rem, 2.5vw, 1.85rem);
+  --font-nav: clamp(.7rem, 2.5vw, 1.85rem);
 
   /*font families*/
   --font-tilt: "Tilt Warp", sans-serif;

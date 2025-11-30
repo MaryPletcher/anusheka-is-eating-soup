@@ -8,7 +8,7 @@ export default function Nav({ children, ...props }) {
         <p className = {styles.page}>
               <Link to = "/">soup history</Link>
               <a> | </a>
-              <Link to = "/ControlPanelPage">control panel</Link>
+              <Link to = "/ControlPanelPage">soup control panel</Link>
               <a> | </a>
               <Link to = "/BirthdayMessagePage">happy birthday!</Link>
           </p>
