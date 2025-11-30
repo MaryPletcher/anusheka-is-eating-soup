@@ -11,11 +11,11 @@ function ControlPanelPage() {
     return (
     <div>
         <Nav>
-            <Link to = "/">soup history</Link>
+            {/* <Link to = "/">soup history</Link>
             <a> | </a>
             <Link to = "/ControlPanelPage">soup control panel</Link>
             <a> | </a>
-            <Link to = "/BirthdayMessagePage">happy birthday!</Link>
+            <Link to = "/BirthdayMessagePage">happy birthday!</Link> */}
         </Nav>
         <ControlPanel/>
     </div>

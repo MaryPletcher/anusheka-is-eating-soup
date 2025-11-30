@@ -1,19 +1,27 @@
+.navBg {
+    background-color: var(--color-component-bg);
+    font-size: var(--font-nav);
+ }
 .nav {
     display: flex;
     flex-direction: row;
     padding: var(--space-2);
-    color: var(--color-text);
+    color: var(--color-component-text);
     text-decoration: none;
-    margin-left: var(--space-2);
     padding-left: 4%;
-    font-size: var(--font-body);
-    /* padding-right: 10%; */
+    font-size: var(--font-nav);
+    background-color: var(--color-component-bg);
+    padding-right: 10%;
+    align-items: center;
 }
 .page {
-    margin-right: var(--space-3);
     font-family: var(--font-sulphur);
+    color: var(--color-component-text);
+    font-size: var(--font-nav);
 } 
 
 a:-webkit-any-link {
-    color: var(--color-text)
+    color: var(--color-component-text);
+    font-family: var(--font-sulphur);
+    font-size: var(--font-nav);
 }
