@@ -92,7 +92,6 @@ function ControlPanel() {
             <div>
             {/* <div className = {styles.tileContainer}> */}
             <Container>
-                {/* <Link to = "/">Home</Link> */}
                 <Title>Soup Control Panel</Title>
                 <TextArea
                     type ="text"
